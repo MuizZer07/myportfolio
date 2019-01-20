@@ -8,20 +8,26 @@
 <div class="container" style="text-align: center">
     <br>
     {% load static %}
-    <img src="{%  static 'muiz.jpg' %}" alt="Muiz" class="rounded" height="25%" width="25%">
-    <br><br>
-    <p>I'm Muiz Ahmed Khan from Bangladesh. I'm an undergrad student studying
-        in Computer Sciece and Engineering at North South University, Bangladesh.</p>
+    <img src="{{ content.dp.url }}" alt="Muiz" class="rounded" height="25%" width="25%">
+    <br>
+    
+    <p>{{ content.short_des | safe }} </p> 
 
-    <a class="btn btn-light"  target=”_blank” href="{% static 'Resume.pdf' %}">See My Resume..</a><br>
-    <a class="btn btn-light" target=”_blank” href="#">Email: muizxzer07@gmail.com</a><br>
+    <a class="btn btn-light"  target=”_blank” href="{{ content.resume.url }}">See My Resume..</a><br>
+    
     <h5>Find me on Social Media!</h5>
     <a data-toggle="tooltip" title="Facebook" class="btn btn-light" target=”_blank” href="https://www.facebook.com/muiz07"><i class="fab fa-facebook-square"></i></a>
     <a data-toggle="tooltip" title="Twitter" class="btn btn-light" target=”_blank” href="https://twitter.com/MuizZer07"><i class="fab fa-twitter"></i></a>
     <a data-toggle="tooltip" title="linkedin" class="btn btn-light" target=”_blank” href="https://www.linkedin.com/in/muiz-ahmed-khan/"><i class="fab fa-linkedin"></i></a>
     <a data-toggle="tooltip" title="github" class="btn btn-light" target=”_blank” href="https://github.com/MuizZer07"><i class="fab fa-github-square"></i></a>
     <a data-toggle="tooltip" title="instagram" class="btn btn-light" target=”_blank” href="https://www.instagram.com/muizzer07/"><i class="fab fa-instagram"></i></a>
-    
-</div>
 
+</div>
+<div style="padding: 30px">
+    <blockquote class="blockquote">
+    <p class="mb-0">"Quiet people have the loudest minds."</p>
+    <footer class="blockquote-footer">Stephen Hawking</footer>
+    </blockquote>
+</div>
+    
 {% endblock %}

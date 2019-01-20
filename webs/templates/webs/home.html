@@ -5,12 +5,12 @@
 {% endblock %}
 
 {% block content %}
-<div class="container" style="text-align: center">
+<div class="container home_container" style="text-align: center;">
     <br>
     {% load static %}
     <img src="{{ content.dp.url }}" alt="Muiz" class="rounded" height="25%" width="25%">
     <br>
-    
+
     <p>{{ content.short_des | safe }} </p> 
 
     <a class="btn btn-light"  target=”_blank” href="{{ content.resume.url }}">See My Resume..</a><br>

@@ -10,4 +10,6 @@ def biopage(request):
     content = Content.objects.get(id=1)
     bio = content.bio
     return render(request, 'webs/bio.html', {'bio': bio})
-    # return HttpResponse(bio)
+
+def music(request):
+    return render(request, 'webs/music.html')

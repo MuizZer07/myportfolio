@@ -10,21 +10,25 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
 
-    {% block title %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+
+    {% block title %} 
     {% endblock %}
 
     {% block customcss %}
     {% endblock %}
     <!-- Custom Fonts -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-        
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet"
+        type="text/css">
+
 </head>
 
 <body>
     <div class="wrapper">
         {% include 'navbar.html' %}
-        
+
         {% block content %}
         {% endblock %}
 
@@ -33,7 +37,7 @@
     <footer style="text-align: end">
         <hr>
         Muiz Ahmed Khan
-        &copy; {%now "Y"%} 
+        &copy; {%now "Y"%}
         <hr>
     </footer>
 

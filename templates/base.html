@@ -6,49 +6,62 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 
-    {% block title %} 
+    {% block title %}
     {% endblock %}
 
     {% block customcss %}
     {% endblock %}
-    <!-- Custom Fonts -->
+    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet"
         type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+
 
 </head>
 
-<body>
+<body class="body">
     <div class="wrapper">
-        {% include 'navbar.html' %}
-
+        <br><br><br><br>
         {% block content %}
         {% endblock %}
 
     </div>
 
-    <footer style="text-align: end">
+    <footer class="footer" style="background-color: rgb(76, 54, 66)">
+        <small>This Website is managed and developed by me. Source code is available on
+            <a class="githublink" target=”_blank” href="https://github.com/MuizZer07"> GitHub.</a>
+            Feel free to give any feedback or contact me on social media.</small>
         <hr>
-        Muiz Ahmed Khan
-        &copy; {%now "Y"%}
-        <hr>
+
+        <a data-toggle="tooltip" title="Facebook" target=”_blank” href="https://www.facebook.com/muiz07"><i class="fab fa-facebook-square"></i></a>
+        <a data-toggle="tooltip" title="Twitter" target=”_blank” href="https://twitter.com/MuizZer07"><i class="fab fa-twitter"></i></a>
+        <a data-toggle="tooltip" title="linkedin" target=”_blank” href="https://www.linkedin.com/in/muiz-ahmed-khan/"><i
+                class="fab fa-linkedin"></i></a>
+        <a data-toggle="tooltip" title="github" target=”_blank” href="https://github.com/MuizZer07"><i class="fab fa-github-square"></i></a>
+        <a data-toggle="tooltip" title="instagram" target=”_blank” href="https://www.instagram.com/muizzer07/"><i class="fab fa-instagram"></i></a>
+        <br>
+        <small>Muiz Ahmed Khan &copy; {%now "Y"%}</small>
     </footer>
 
-    {% block customjs %}
-    {% endblock %}
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
+
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    {% block customjs %}
+    {% endblock %}
 
 </body>
 

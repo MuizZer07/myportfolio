@@ -1,0 +1,23 @@
+.home_container {
+    text-align: center;
+    padding: 15px;
+}
+
+.body{
+    background-color:#ffd1d1;
+}
+
+.footer{
+    margin-top: 20px;
+    padding:5px;
+    padding-top: 45px;
+    background-color:  rgb(66, 0, 72);
+    text-align: end;
+    color:white;
+    line-height: 90%;
+}
+
+.githublink{
+    text-decoration: underline; 
+    color: white;
+}

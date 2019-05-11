@@ -1,0 +1,96 @@
+{% extends 'new_base.html'%} 
+
+{% block title %}
+<title>My Projects</title>
+{% endblock %} 
+
+{% block customcss %}
+ {% load staticfiles %} 
+{% endblock %} 
+
+
+{% block content %} 
+<div class="container-fluid">
+    <div class="row">
+        <nav class="nav-extended #263238 blue-grey darken-4" style="padding-left: 20px">
+            <div class="nav-wrapper">
+            <a href="#" class="brand-logo">My Projects & Works</a>
+            </div>
+            <div class="nav-content">
+            <ul class="tabs tabs-transparent">
+                <li class="tab"><a href="#UniversityProjects" class="active">University Projects</a></li>
+                <li class="tab"><a href="#ResearchProjects">Research Projects</a></li>
+                <li class="tab"><a href="#Others">Other Works</a></li>
+            </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="row">
+        <div id="UniversityProjects" class="col s12">
+            {% for project in projects %}
+                {% if project.category == 'university' %}
+                <div class="col s12 m4">
+                    <div class="card blue-grey darken-1" style="height: 200px; overflow: hidden">
+                        <div class="card-content white-text">
+                        <span class="card-title">{{ project.title }}</span>
+                        <p style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">{{ project.full_des }}</p>
+                        </div>
+                        <div class="card-action">
+                        <a href="{% url 'show_project' project.id %}">Read More..</a>
+                        <a href="{{ project.github_link }}" target="_blank">Github</a>  
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+    </div>  
+    <div id="ResearchProjects" class="col s12">
+            {% for project in projects %}
+            {% if project.category == 'research' %}
+            <div class="col s12 m4">
+                <div class="card blue-grey darken-1" style="height: 200px; overflow: hidden">
+                    <div class="card-content white-text">
+                    <span class="card-title">{{ project.title }}</span>
+                    <p style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">{{ project.full_des }}</p>
+                        </div>
+                    <div class="card-action">
+                        <a href="{% url 'show_project' project.id %}">Read More..</a>
+                        <a target="_blank" href="{{ project.github_link }}">Github</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div id="Others" class="col s12">
+        {% for project in projects %}
+            {% if project.category == 'others' %}
+            <div class="col s12 m4">
+                <div class="card blue-grey darken-1" style="height: 200px; overflow: hidden">
+                    <div class="card-content white-text">
+                    <span class="card-title">{{ project.title }}</span>
+                    <p style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">{{ project.full_des }}</p>
+                        </div>
+                    <div class="card-action">
+                        <a href="{% url 'show_project' project.id %}">Read More..</a>
+                        <a href="{{ project.github_link }}" target="_blank">Github</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+
+
+{% endblock %} 
+
+{% block customjs %}
+<script>
+   $(document).ready(function(){
+    $('.tabs').tabs();
+  });
+</script>
+
+{% endblock %} 

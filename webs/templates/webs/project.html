@@ -28,12 +28,43 @@
         <div class="col s12">
             <div class="card blue-grey darken-1" >
                 <div class="card-content white-text">
+                {% if project.pic != '' %}
+                <div class="center">
+                        <img width="650" src="{{ project.pic.url }}">
+                </div>
+                {% endif %}
                 <span class="card-title">{{ project.title }}</span>
+                <h5>Description</h5>
                 <p>{{ project.full_des }}</p>
+
+                <h5>Details</h5>
+                <p><strong>Tools Used:</strong>
+                    
+                    {% for tool in project.tools.all %}
+                        {{ tool.tool }}
+                        {% if tool !=  project.tools.last %}
+                            ,
+                        {% endif %}
+                    {% endfor%}
+                  
+                    <br>
+                   <strong>Duration:</strong> {{ project.start_date }} - {{ project.end_date }}<br>
+                   <strong>Ongoing:</strong> 
+                   {% if project.ongoing  == 1%}
+                        Yes
+                   {% else%}
+                        No
+                   {% endif %}
+                   <br>
+                   {% if project.references != '' %}
+                     <strong>References:</strong> {{ project.references|safe }}
+                   {% endif %}<br>
+                </p>
                 </div>
                 <div class="card-action">
-                <a href="{{ project.github_link }}">Github</a>  
-                </div>
+                {% if project.github_link != '' %}
+                <a href="{{ project.github_link }}" target="_blank">Github</a>  
+                {% endif %}</div>
             </div>
         </div>
     </div>

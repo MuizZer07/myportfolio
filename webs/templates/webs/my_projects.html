@@ -30,14 +30,29 @@
             {% for project in projects %}
                 {% if project.category == 'university' %}
                 <div class="col s12 m4">
-                    <div class="card blue-grey darken-1" style="height: 200px; overflow: hidden">
+                    <div class="card blue-grey darken-1" style="height: 225px; overflow: hidden">
                         <div class="card-content white-text">
-                        <span class="card-title">{{ project.title }}</span>
-                        <p style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">{{ project.full_des }}</p>
+                            <span class="card-title">
+                                {{ project.title }}
+                            </span>
+                            <p style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">{{ project.full_des }}</p>
+                            <br><hr>
+                            Tools: 
+                            {% if project.tools.count  > 4 %}
+                                <span class="new badge" data-badge-caption="">..and more</span>  
+                            {% endif %}
+                            
+                           {% for tool in project.tools.all|slice:":4"  %}
+                             <span class="new badge" data-badge-caption="">{{ tool.tool }}</span>  
+                           {% endfor%}
+                             
                         </div>
                         <div class="card-action">
                         <a href="{% url 'show_project' project.id %}">Read More..</a>
+
+                        {% if project.github_link != '' %}
                         <a href="{{ project.github_link }}" target="_blank">Github</a>  
+                        {% endif %}
                         </div>
                     </div>
                 </div>
@@ -48,15 +63,27 @@
             {% for project in projects %}
             {% if project.category == 'research' %}
             <div class="col s12 m4">
-                <div class="card blue-grey darken-1" style="height: 200px; overflow: hidden">
+                <div class="card blue-grey darken-1" style="height: 225px; overflow: hidden">
                     <div class="card-content white-text">
                     <span class="card-title">{{ project.title }}</span>
                     <p style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">{{ project.full_des }}</p>
-                        </div>
+                    <br><hr>
+                    Tools: 
+                    {% if project.tools.count  > 4 %}
+                        <span class="new badge" data-badge-caption="">..and more</span>  
+                    {% endif %}
+                    {% for tool in project.tools.all|slice:":4"  %}
+                      <span class="new badge" data-badge-caption="">{{ tool.tool }}</span>  
+                    {% endfor%}
+                </div>
                     <div class="card-action">
                         <a href="{% url 'show_project' project.id %}">Read More..</a>
-                        <a target="_blank" href="{{ project.github_link }}">Github</a>
-                    </div>
+                        {% if project.github_link != '' %}
+                        <a href="{{ project.github_link }}" target="_blank">Github</a>  
+                        {% endif %}
+                        {% if project.ongoing == 1 %}
+                        <span class="new badge" data-badge-caption="">OnGoing! Project..</span> 
+                        {% endif %}</div>
                 </div>
             </div>
             {% endif %}
@@ -66,14 +93,27 @@
         {% for project in projects %}
             {% if project.category == 'others' %}
             <div class="col s12 m4">
-                <div class="card blue-grey darken-1" style="height: 200px; overflow: hidden">
+                <div class="card blue-grey darken-1" style="height: 225px; overflow: hidden">
                     <div class="card-content white-text">
                     <span class="card-title">{{ project.title }}</span>
                     <p style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">{{ project.full_des }}</p>
-                        </div>
+                    <br><hr>
+                    Tools: 
+                    {% if project.tools.count  > 4 %}
+                        <span class="new badge" data-badge-caption="">..and more</span>  
+                    {% endif %}
+                    {% for tool in project.tools.all|slice:":4"  %}
+                      <span class="new badge" data-badge-caption="">{{ tool.tool }}</span>  
+                    {% endfor%}
+                </div>
                     <div class="card-action">
                         <a href="{% url 'show_project' project.id %}">Read More..</a>
-                        <a href="{{ project.github_link }}" target="_blank">Github</a>
+                        {% if project.github_link != '' %}
+                        <a href="{{ project.github_link }}" target="_blank">Github</a>  
+                        {% endif %}
+                        {% if project.ongoing == 1 %}
+                        <span class="new badge" data-badge-caption="">OnGoing! Project..</span> 
+                        {% endif %}
                     </div>
                 </div>
             </div>

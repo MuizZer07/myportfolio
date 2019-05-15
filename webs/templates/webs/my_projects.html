@@ -18,6 +18,7 @@
             </div>
             <div class="nav-content">
             <ul class="tabs tabs-transparent">
+                <li class=""><a href="{% url 'home' %}"><i class="material-icons">arrow_back</i></a></li>
                 <li class="tab"><a href="#UniversityProjects" class="active">University Projects</a></li>
                 <li class="tab"><a href="#ResearchProjects">Research Projects</a></li>
                 <li class="tab"><a href="#Others">Other Works</a></li>
@@ -105,7 +106,7 @@
                     {% for tool in project.tools.all|slice:":4"  %}
                       <span class="new badge" data-badge-caption="">{{ tool.tool }}</span>  
                     {% endfor%}
-                </div>
+                    </div>
                     <div class="card-action">
                         <a href="{% url 'show_project' project.id %}">Read More..</a>
                         {% if project.github_link != '' %}

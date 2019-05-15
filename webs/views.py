@@ -1,6 +1,7 @@
-from django.shortcuts import render
-from .models import Content, Project
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from .models import Content, Project, TextBin, FileBin
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core.paginator import Paginator
 
 def homepage(request):
     content = Content.objects.get(id=1)
@@ -15,4 +16,31 @@ def show_project(request, project_id):
     return render(request, 'webs/project.html', {'project': p})
 
 def bin(request):
-    return render(request, 'webs/bin.html')
+    texts = TextBin.objects.order_by('-id')
+    files = FileBin.objects.order_by('-id')
+    recent_texts_list = TextBin.objects.order_by('-id')
+    recent_files_list = FileBin.objects.order_by('-id')
+
+    paginator = Paginator(recent_texts_list, 5)
+    page = request.GET.get('page')
+    recent_texts = paginator.get_page(page)
+
+    paginator1 = Paginator(recent_files_list, 5)
+    page1 = request.GET.get('page1')
+    recent_files = paginator1.get_page(page1)
+    return render(request, 'webs/bin.html', {'texts': texts, 'files': files, 'recent_texts': recent_texts, 'recent_files': recent_files})
+
+def deletetext(request, text_id):
+    instance = TextBin.objects.get(id=text_id)
+    instance.delete()
+
+    a = request.POST.get('bin', '/bin')
+    return HttpResponseRedirect(a)
+
+def deletefile(request, file_id):
+    instance = FileBin.objects.get(id=file_id)
+    instance.delete()
+
+    a = request.POST.get('bin', '/bin')
+    return HttpResponseRedirect(a)
+

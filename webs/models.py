@@ -37,3 +37,20 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title 
+
+class TextBin(models.Model):
+    text = models.TextField()
+    imp = models.BooleanField()
+    created = models.DateField(auto_now=True, blank=True)
+
+    def __str__(self):
+        return self.text 
+
+class FileBin(models.Model):
+    name = models.TextField(blank=True)
+    file = models.FileField(upload_to='files/', null=True)
+    imp = models.BooleanField()
+    created = models.DateField(auto_now=True, blank=True)
+
+    def __str__(self):
+        return self.name

@@ -1,7 +1,7 @@
 {% extends 'new_base.html'%} 
 
 {% block title %}
-<title>My Projects</title>
+<title>My Projects (Beta)</title>
 {% endblock %} 
 
 {% block customcss %}
@@ -14,7 +14,7 @@
     <div class="row">
         <nav class="nav-extended #263238 blue-grey darken-4" style="padding-left: 20px">
             <div class="nav-wrapper">
-            <a href="#" class="brand-logo">My Projects</a>
+            <a href="#" class="brand-logo">My Projects (Beta)</a>
             </div>
             <div class="nav-content">
             <ul class="tabs tabs-transparent">
@@ -38,7 +38,7 @@
                             </span>
                             <p style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">{{ project.full_des }}</p>
                             <br><hr>
-                            Tools: 
+                            Tools: <br>
                             {% if project.tools.count  > 3 %}
                                 <span class="new badge" data-badge-caption="">..and more</span>  
                             {% endif %}
@@ -69,7 +69,7 @@
                     <span class="card-title">{{ project.title }}</span>
                     <p style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">{{ project.full_des }}</p>
                     <br><hr>
-                    Tools: 
+                    Tools: <br>
                     {% if project.tools.count  > 3 %}
                         <span class="new badge" data-badge-caption="">..and more</span>  
                     {% endif %}
@@ -99,7 +99,7 @@
                     <span class="card-title">{{ project.title }}</span>
                     <p style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">{{ project.full_des }}</p>
                     <br><hr>
-                    Tools: 
+                    Tools: <br>
                     {% if project.tools.count  > 3 %}
                         <span class="new badge" data-badge-caption="">..and more</span>  
                     {% endif %}

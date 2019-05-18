@@ -31,7 +31,7 @@ class Project(models.Model):
     category = models.CharField(max_length=50)
     ongoing = models.BooleanField()
     start_date = models.DateField()
-    end_date = models.DateField(blank=True)
+    end_date = models.DateField(blank=True, null=True)
     description_lastupdated = models.DateField(auto_now=True, blank=True)
     pic = models.ImageField(upload_to='images/', blank=True)
 
@@ -48,7 +48,7 @@ class TextBin(models.Model):
 
 class FileBin(models.Model):
     name = models.TextField(blank=True)
-    file = models.FileField(upload_to='files/')
+    file = models.FileField(upload_to='files/', null=True)
     imp = models.BooleanField(default=False)
     created = models.DateField(auto_now=True, blank=True)
 

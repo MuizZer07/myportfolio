@@ -2,7 +2,7 @@
 
 
 {% block title %}
-<title>My Projects</title>
+<title>My Projects (Beta)</title>
 {% endblock %} 
 
 {% block customcss %}
@@ -15,7 +15,7 @@
     <div class="row">
         <nav class="nav-extended #263238 blue-grey darken-4" style="padding-left: 20px">
             <div class="nav-wrapper">
-            <a href="#" class="brand-logo">My Projects</a>
+            <a href="#" class="brand-logo">My Projects (Beta)</a>
             </div>
             <div class="nav-content">
             <ul class="tabs tabs-transparent">
@@ -48,7 +48,14 @@
                     {% endfor%}
                   
                     <br>
-                   <strong>Duration:</strong> {{ project.start_date }} - {{ project.end_date }}<br>
+                   <strong>Duration:</strong> {{ project.start_date }} - 
+                   {% if project.end_date !=  None %}
+                   {{ project.end_date }}
+
+                   {% else %}
+                    Present
+                    {% endif %}
+                   <br>
                    <strong>Ongoing:</strong> 
                    {% if project.ongoing  == 1%}
                         Yes
@@ -56,6 +63,12 @@
                         No
                    {% endif %}
                    <br>
+                   {% if project.feature != '' %}
+                     <strong>Features:</strong> {{ project.feature }}
+                   {% endif %}<br>
+                   {% if project.platform != '' %}
+                     <strong>Platform:</strong> {{ project.platform }}
+                   {% endif %}<br>
                    {% if project.references != '' %}
                      <strong>References:</strong> {{ project.references|safe }}
                    {% endif %}<br>
@@ -64,7 +77,9 @@
                 <div class="card-action">
                 {% if project.github_link != '' %}
                 <a href="{{ project.github_link }}" target="_blank">Github</a>  
-                {% endif %}</div>
+                {% endif %}
+                <a href="{% url 'projects' %}">Back</a>  
+            </div>
             </div>
         </div>
     </div>

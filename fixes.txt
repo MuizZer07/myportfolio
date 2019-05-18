@@ -1,1 +1,17 @@
+Fixes:
 - TextBin: text align in model, important attribute fix, form rearrange
+- Expertise on different tools
+- Projects: carousel pic and overall view,decription in the website
+
+Fixed:
+- Projects: End date fix, tools alignment, Platforms, Feature
+
+Implemented: (so far)
+- Portfolio
+- My Projects
+- Copy Paste Bin
+
+Future Implementation:
+- Chatbot (personal assistant)
+- Greetings Message (with date, horoscope, weather, breaking news)
+- Fix an Appointment form (via Email)

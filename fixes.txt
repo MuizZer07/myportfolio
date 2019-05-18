@@ -1,0 +1,1 @@
+- TextBin: text align in model, important attribute fix, form rearrange

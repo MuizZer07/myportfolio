@@ -1,7 +1,7 @@
 {% extends 'new_base.html'%} 
 
 {% block title %}
-<title>Copy Paste Bin</title>
+<title>My Bin</title>
 {% endblock %} 
 
 {% block customcss %}
@@ -13,7 +13,7 @@
     <div class="row">
             <nav class="nav-extended #00796b teal darken-2" style="padding-left: 20px">
                     <div class="nav-wrapper">
-                    <a href="#" class="brand-logo">Copy Paste Bin</a>
+                    <a href="#" class="brand-logo">My Bin (Beta)</a>
                     </div>
                     <div class="nav-content">
                     <ul class="tabs tabs-transparent">
@@ -28,68 +28,64 @@
     <div class="row">
         <div id="random" class="col s12">
             <div class="col s12 m8">
+                
                 <div class="textform">
-                    <form class="col s12">
-                        <div class="input-field col s12">
-                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                            <label for="textarea1">Paste Here!</label>
-                        </div>
-                        <label>
-                            <input type="checkbox"/>
-                            <span>Important </span>
-                        </label> || 
-                        <input class="btn" type="submit" value="Save">
-                        <hr>
+                    <form method="POST" action="/text/new/" class="col s12 post-form">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="save btn btn-default">Save</button>
                     </form>
                 </div>
-                <h5>Recent Texts</h5>
-                {% for text in recent_texts %}
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
-                            <p>{{ text.text }} </p> 
-                    </div>
-                    <div class="card-action" style="color: white">
-                            {{ text.created }} | {% if text.imp != 1 %}<a class="green btn">Not Important</a>
-                            {% else %}
-                            <a class="red btn">Important</a>
-                            {% endif %} | <a href="{% url 'deletetext' text.id %}" class="red btn">
-                                Delete</a>
-                    </div>
-                </div>
-                {% endfor %} 
-            </div>
-            <div class="col s12 m4">
-                    <form action="#">
-                        <div class="file-field input-field">
-                            <div class="btn">
-                            <span>File</span>
-                            <input type="file">
-                            </div>
-                            <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text">
-                            </div>
-                        </div>
-                    </form>
-                    <h5 style="margin-top: 70px">Recent Files</h5>
-                    {% for file in recent_files %}
+
+                <div class="" style="margin-top: 200px">
+                    <h5>Recent Texts</h5>
+                    {% for text in recent_texts %}
                     <div class="card blue-grey darken-1">
                         <div class="card-content white-text">
-                                <p> <a target="_blank" href="{{ file.file.url }}">
-                                    {% if file.name != '' %}
-                                        {{ file.name }} 
-                                    {% else %}
-                                        No Name
-                                    {% endif %} <a/> </p> 
+                                <p>{{ text.text }} </p> 
                         </div>
                         <div class="card-action" style="color: white">
-                                {{ file.created }} |{% if text.imp != 1 %}<a class="green btn">Not Important</a>
+                                {{ text.created }} | {% if text.imp != 1 %}<a class="green btn">Not Important</a>
                                 {% else %}
                                 <a class="red btn">Important</a>
-                                {% endif %} | <a href="{% url 'deletefile' file.id %}" class="red btn">
+                                {% endif %} | <a href="{% url 'deletetext' text.id %}" class="red btn">
                                     Delete</a>
                         </div>
                     </div>
                     {% endfor %} 
+                </div>
+            </div>
+            <div class="col s12 m4">
+                    <div class="textform">
+                            <form enctype="multipart/form-data" method="POST" action="/file/new/" class="col s12 post-form">
+                                {% csrf_token %}
+                                {{ file_form.as_p }}
+                                <button type="submit" class="save btn btn-default">Save</button>
+                            </form>
+                        </div>
+                        
+                        <div class="" style="margin-top: 200px">
+                            <h5 style="margin-top: 70px">Recent Files</h5>
+                            {% for file in recent_files %}
+                            <div class="card blue-grey darken-1">
+                                <div class="card-content white-text">
+                                        <p> <a target="_blank" href="{{ file.file.url }}">
+                                            {% if file.name != '' %}
+                                                {{ file.name }} 
+                                            {% else %}
+                                                No Name
+                                            {% endif %} <a/> </p> 
+                                </div>
+                                <div class="card-action" style="color: white">
+                                        {{ file.created }} |{% if text.imp != 1 %}<a class="green btn">Not Important</a>
+                                        {% else %}
+                                        <a class="red btn">Important</a>
+                                        {% endif %} | <a href="{% url 'deletefile' file.id %}" class="red btn">
+                                            Delete</a>
+                                </div>
+                            </div>
+                            {% endfor %} 
+                        </div>
             </div>
         </div> 
         <div id="saved" class="col s12">
@@ -116,25 +112,23 @@
                 <div class="col s12 m4">
                         <h5>Important Files</h5>
                         {% for file in files %}
-                        {% if file.imp == 1 %}
-                            <div class="card blue-grey darken-1">
-                                <div class="card-content white-text">
-                                    <p> <a target="_blank" href="{{ file.file.url }}">
-                                        {% if file.name != '' %}
-                                            {{ file.name }} 
-                                        {% else %}
-                                            No Name
-                                        {% endif %} <a/> </p> 
+                            {% if file.imp == 1 %}
+                                <div class="card blue-grey darken-1">
+                                    <div class="card-content white-text">
+                                        <p> <a target="_blank" href="{{ file.file.url }}">
+                                            {% if file.name != '' %}
+                                                {{ file.name }} 
+                                            {% else %}
+                                                No Name
+                                            {% endif %} <a/> </p> 
+                                    </div>
+                                    <div class="card-action" style="color: white">
+                                        {{ file.created }} | <a class="red btn"> Important</a>
+                                       | <a href="{% url 'deletefile' file.id %}" class="red btn">
+                                            Delete</a>
+                                    </div>
                                 </div>
-                                <div class="card-action" style="color: white">
-                                    {{ file.created }} |{% if text.imp != 1 %}<a class="green btn">Not Important</a>
-                                    {% else %}
-                                    <a class="red btn">Important</a>
-                                    {% endif %} | <a href="{% url 'deletefile' file.id %}" class="red btn">
-                                        Delete</a>
-                                </div>
-                            </div>
-                        {% endif %}
+                            {% endif %}
                         {% endfor %} 
                 </div>
             </div>  

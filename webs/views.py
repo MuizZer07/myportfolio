@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .models import Content, Project, TextBin, FileBin
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.paginator import Paginator
+from .forms import TextForm, FileForm
+from django.utils import timezone
 
 def homepage(request):
     content = Content.objects.get(id=1)
@@ -16,6 +18,8 @@ def show_project(request, project_id):
     return render(request, 'webs/project.html', {'project': p})
 
 def bin(request):
+    form = TextForm()
+    file_form = FileForm()
     texts = TextBin.objects.order_by('-id')
     files = FileBin.objects.order_by('-id')
     recent_texts_list = TextBin.objects.order_by('-id')
@@ -28,7 +32,7 @@ def bin(request):
     paginator1 = Paginator(recent_files_list, 5)
     page1 = request.GET.get('page1')
     recent_files = paginator1.get_page(page1)
-    return render(request, 'webs/bin.html', {'texts': texts, 'files': files, 'recent_texts': recent_texts, 'recent_files': recent_files})
+    return render(request, 'webs/bin.html', {'form':form, 'file_form':file_form, 'texts': texts, 'files': files, 'recent_texts': recent_texts, 'recent_files': recent_files})
 
 def deletetext(request, text_id):
     instance = TextBin.objects.get(id=text_id)
@@ -44,3 +48,24 @@ def deletefile(request, file_id):
     a = request.POST.get('bin', '/bin')
     return HttpResponseRedirect(a)
 
+def savetext(request):
+    if request.method == "POST":
+        form = TextForm(request.POST)
+        text = form.save(commit=False)
+        text.created = timezone.now()
+        text.save()
+
+        a = request.POST.get('bin', '/bin')
+        return HttpResponseRedirect(a)
+
+def savefile(request):
+    if request.method == "POST":
+        form = FileForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            file = form.save(commit=False)
+            file.created = timezone.now()
+            file.save()
+            
+        a = request.POST.get('bin', '/bin')
+        return HttpResponseRedirect(a)

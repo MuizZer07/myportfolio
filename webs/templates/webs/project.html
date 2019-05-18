@@ -15,7 +15,7 @@
     <div class="row">
         <nav class="nav-extended #263238 blue-grey darken-4" style="padding-left: 20px">
             <div class="nav-wrapper">
-            <a href="#" class="brand-logo">My Projects & Works</a>
+            <a href="#" class="brand-logo">My Projects</a>
             </div>
             <div class="nav-content">
             <ul class="tabs tabs-transparent">
@@ -30,7 +30,7 @@
                 <div class="card-content white-text">
                 {% if project.pic != '' %}
                 <div class="center">
-                        <img width="650" src="{{ project.pic.url }}">
+                        <img class="responsive-img" width="650" src="{{ project.pic.url }}">
                 </div>
                 {% endif %}
                 <span class="card-title">{{ project.title }}</span>

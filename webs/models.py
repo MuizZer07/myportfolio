@@ -40,7 +40,7 @@ class Project(models.Model):
 
 class TextBin(models.Model):
     text = models.TextField()
-    imp = models.BooleanField()
+    imp = models.BooleanField(default=False)
     created = models.DateField(auto_now=True, blank=True)
 
     def __str__(self):
@@ -48,8 +48,8 @@ class TextBin(models.Model):
 
 class FileBin(models.Model):
     name = models.TextField(blank=True)
-    file = models.FileField(upload_to='files/', null=True)
-    imp = models.BooleanField()
+    file = models.FileField(upload_to='files/')
+    imp = models.BooleanField(default=False)
     created = models.DateField(auto_now=True, blank=True)
 
     def __str__(self):

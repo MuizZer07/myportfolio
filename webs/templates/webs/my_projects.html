@@ -14,7 +14,7 @@
     <div class="row">
         <nav class="nav-extended #263238 blue-grey darken-4" style="padding-left: 20px">
             <div class="nav-wrapper">
-            <a href="#" class="brand-logo">My Projects & Works</a>
+            <a href="#" class="brand-logo">My Projects</a>
             </div>
             <div class="nav-content">
             <ul class="tabs tabs-transparent">
@@ -39,11 +39,11 @@
                             <p style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">{{ project.full_des }}</p>
                             <br><hr>
                             Tools: 
-                            {% if project.tools.count  > 4 %}
+                            {% if project.tools.count  > 3 %}
                                 <span class="new badge" data-badge-caption="">..and more</span>  
                             {% endif %}
                             
-                           {% for tool in project.tools.all|slice:":4"  %}
+                           {% for tool in project.tools.all|slice:":3"  %}
                              <span class="new badge" data-badge-caption="">{{ tool.tool }}</span>  
                            {% endfor%}
                              
@@ -70,10 +70,10 @@
                     <p style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">{{ project.full_des }}</p>
                     <br><hr>
                     Tools: 
-                    {% if project.tools.count  > 4 %}
+                    {% if project.tools.count  > 3 %}
                         <span class="new badge" data-badge-caption="">..and more</span>  
                     {% endif %}
-                    {% for tool in project.tools.all|slice:":4"  %}
+                    {% for tool in project.tools.all|slice:":3"  %}
                       <span class="new badge" data-badge-caption="">{{ tool.tool }}</span>  
                     {% endfor%}
                 </div>
@@ -100,10 +100,10 @@
                     <p style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">{{ project.full_des }}</p>
                     <br><hr>
                     Tools: 
-                    {% if project.tools.count  > 4 %}
+                    {% if project.tools.count  > 3 %}
                         <span class="new badge" data-badge-caption="">..and more</span>  
                     {% endif %}
-                    {% for tool in project.tools.all|slice:":4"  %}
+                    {% for tool in project.tools.all|slice:":3"  %}
                       <span class="new badge" data-badge-caption="">{{ tool.tool }}</span>  
                     {% endfor%}
                     </div>

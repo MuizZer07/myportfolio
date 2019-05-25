@@ -1,17 +1,19 @@
 Fixes:
-- TextBin: text align in model, important attribute fix, form rearrange
+- TextBin:  important attribute fix, form rearrange
 - Expertise on different tools
-- Projects: carousel pic and overall view,decription in the website
+- Projects: multiple picture in for a project, carousel pic, decription in the website
 
 Fixed:
-- Projects: End date fix, tools alignment, Platforms, Feature
+- Projects: End date fix, tools alignment, Platforms, Feature, Card Alignment, Tooltip
+- text align in model
 
 Implemented: (so far)
 - Portfolio
-- My Projects
-- Copy Paste Bin
+- My Projects (beta)
+- Copy Paste Bin (beta)
 
 Future Implementation:
+- New Frontend for the Portfolio
 - Chatbot (personal assistant)
 - Greetings Message (with date, horoscope, weather, breaking news)
 - Fix an Appointment form (via Email)

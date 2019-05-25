@@ -1,7 +1,7 @@
 {% extends 'new_base.html'%} 
 
 {% block title %}
-<title>My Projects (Beta)</title>
+<title>My Projects</title>
 {% endblock %} 
 
 {% block customcss %}
@@ -14,7 +14,7 @@
     <div class="row">
         <nav class="nav-extended #263238 blue-grey darken-4" style="padding-left: 20px">
             <div class="nav-wrapper">
-            <a href="#" class="brand-logo">My Projects (Beta)</a>
+            <a href="#" class="brand-logo">My Projects</a>
             </div>
             <div class="nav-content">
             <ul class="tabs tabs-transparent">
@@ -33,7 +33,7 @@
                 <div class="col s12 m4">
                     <div class="card blue-grey darken-1" style="height: 225px; overflow: hidden">
                         <div class="card-content white-text">
-                            <span class="card-title">
+                            <span data-position="bottom" data-tooltip="{{ project.title }}" class="card-title tooltipped" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">
                                 {{ project.title }}
                             </span>
                             <p style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">{{ project.full_des }}</p>
@@ -66,8 +66,9 @@
             <div class="col s12 m4">
                 <div class="card blue-grey darken-1" style="height: 225px; overflow: hidden">
                     <div class="card-content white-text">
-                    <span class="card-title">{{ project.title }}</span>
-                    <p style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">{{ project.full_des }}</p>
+                    <span data-position="bottom" data-tooltip="{{ project.title }}" class="card-title tooltipped" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">
+                        {{ project.title }}
+                    </span><p style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">{{ project.full_des }}</p>
                     <br><hr>
                     Tools: <br>
                     {% if project.tools.count  > 3 %}
@@ -96,7 +97,9 @@
             <div class="col s12 m4">
                 <div class="card blue-grey darken-1" style="height: 225px; overflow: hidden">
                     <div class="card-content white-text">
-                    <span class="card-title">{{ project.title }}</span>
+                    <span data-position="bottom" data-tooltip="{{ project.title }}" class="card-title tooltipped" style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">
+                        {{ project.title }}
+                    </span>
                     <p style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;max-width: 50ch;">{{ project.full_des }}</p>
                     <br><hr>
                     Tools: <br>
@@ -133,5 +136,9 @@
     $('.tabs').tabs();
   });
 </script>
-
+<script>
+    $(document).ready(function(){
+    $('.tooltipped').tooltip();
+  });
+ </script>
 {% endblock %} 

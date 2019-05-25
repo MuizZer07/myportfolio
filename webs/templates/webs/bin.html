@@ -19,7 +19,7 @@
                     <ul class="tabs tabs-transparent">
                         <li class=""><a href="{% url 'home' %}"><i class="material-icons">arrow_back</i></a></li>
                         <li class="tab"><a href="#random" class="active">Random Upload</a></li>
-                        <li class="tab"><a href="#saved">Important</a></li>
+                        <!-- <li class="tab"><a href="#saved">Important</a></li> -->
                         <li class="tab"><a href="#archive">Archive</a></li>
                     </ul>
                     </div>
@@ -42,13 +42,17 @@
                     {% for text in recent_texts %}
                     <div class="card blue-grey darken-1">
                         <div class="card-content white-text">
-                                <p>{{ text.text }} </p> 
+                                <p>{{ text.text|linebreaksbr }}</p>
                         </div>
                         <div class="card-action" style="color: white">
-                                {{ text.created }} | {% if text.imp != 1 %}<a class="green btn">Not Important</a>
+                                {{ text.created }} | 
+                                <!-- {% if text.imp != 1 %}
+                                    <a class="green btn">Not Important</a>
                                 {% else %}
-                                <a class="red btn">Important</a>
-                                {% endif %} | <a href="{% url 'deletetext' text.id %}" class="red btn">
+                                    <a class="red btn">Important</a>
+                                {% endif %} 
+                                |  -->
+                                <a href="{% url 'deletetext' text.id %}" class="red btn">
                                     Delete</a>
                         </div>
                     </div>
@@ -77,10 +81,13 @@
                                             {% endif %} <a/> </p> 
                                 </div>
                                 <div class="card-action" style="color: white">
-                                        {{ file.created }} |{% if text.imp != 1 %}<a class="green btn">Not Important</a>
+                                        {{ file.created }} |
+                                        <!-- {% if text.imp != 1 %}
+                                            <a class="green btn">Not Important</a>
                                         {% else %}
                                         <a class="red btn">Important</a>
-                                        {% endif %} | <a href="{% url 'deletefile' file.id %}" class="red btn">
+                                        {% endif %} | -->
+                                         <a href="{% url 'deletefile' file.id %}" class="red btn">
                                             Delete</a>
                                 </div>
                             </div>
@@ -88,7 +95,7 @@
                         </div>
             </div>
         </div> 
-        <div id="saved" class="col s12">
+        <!-- <div id="saved" class="col s12">
                 <div class="col s12 m8">
                     
                     <h5>Important Texts</h5>
@@ -96,13 +103,15 @@
                     {% if text.imp == 1%}
                     <div class="card blue-grey darken-1">
                         <div class="card-content white-text">
-                                <p>{{ text.text }} </p> 
+                                <p>{{ text.text|linebreaksbr }} </p> 
                         </div>
                         <div class="card-action" style="color: white">
-                                {{ text.created }} | {% if text.imp != 1 %}<a class="green btn">Not Important</a>
+                                {{ text.created }} |
+                                 {% if text.imp != 1 %}<a class="green btn">Not Important</a>
                                 {% else %}
                                 <a class="red btn">Important</a>
-                                {% endif %} | <a href="{% url 'deletetext' text.id %}" class="red btn">
+                                {% endif %} |
+                                 <a href="{% url 'deletetext' text.id %}" class="red btn">
                                     Delete</a>
                         </div>
                     </div>
@@ -123,7 +132,8 @@
                                             {% endif %} <a/> </p> 
                                     </div>
                                     <div class="card-action" style="color: white">
-                                        {{ file.created }} | <a class="red btn"> Important</a>
+                                        {{ file.created }} | 
+                                        <a class="red btn"> Important</a>
                                        | <a href="{% url 'deletefile' file.id %}" class="red btn">
                                             Delete</a>
                                     </div>
@@ -131,7 +141,7 @@
                             {% endif %}
                         {% endfor %} 
                 </div>
-            </div>  
+            </div>   -->
         <div id="archive" class="col s12">
                 <div class="col s12 m8">
                     
@@ -139,13 +149,15 @@
                     {% for text in texts %}
                     <div class="card blue-grey darken-1">
                         <div class="card-content white-text">
-                                <p>{{ text.text }} </p> 
+                                <p>{{ text.text |linebreaksbr}} </p> 
                         </div>
                         <div class="card-action" style="color: white">
-                                {{ text.created }} | {% if text.imp != 1 %}<a class="green btn">Not Important</a>
+                                {{ text.created }} | 
+                                <!-- {% if text.imp != 1 %}<a class="green btn">Not Important</a>
                                 {% else %}
                                 <a class="red btn">Important</a>
-                                {% endif %} | <a href="{% url 'deletetext' text.id %}" class="red btn">
+                                {% endif %} |  -->
+                                <a href="{% url 'deletetext' text.id %}" class="red btn">
                                     Delete</a>
                         </div>
                     </div>
@@ -164,10 +176,12 @@
                                         {% endif %} <a/> </p> 
                             </div>
                             <div class="card-action" style="color: white">
-                                    {{ file.created }} |{% if text.imp != 1 %}<a class="green btn">Not Important</a>
+                                    {{ file.created }} |
+                                    <!-- {% if text.imp != 1 %}<a class="green btn">Not Important</a>
                                     {% else %}
                                     <a class="red btn">Important</a>
-                                    {% endif %} | <a href="{% url 'deletefile' file.id %}" class="red btn">
+                                    {% endif %} |  -->
+                                    <a href="{% url 'deletefile' file.id %}" class="red btn">
                                         Delete</a>
                             </div>
                         </div>

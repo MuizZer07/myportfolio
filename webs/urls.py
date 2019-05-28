@@ -10,4 +10,6 @@ urlpatterns = [
     url(r'^delete/file/(\d+)/', views.deletefile, name='deletefile'),
     url(r'^text/new/', views.savetext, name='savetext'),
     url(r'^file/new/', views.savefile, name='savefile'),
+    url(r'^my_top_10s', views.my_top_10s, name='top_10s'),
+    url(r'^my_ratings', views.my_ratings, name='my_ratings'),
 ] 

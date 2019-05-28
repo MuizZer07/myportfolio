@@ -46,6 +46,7 @@
                 </li>
             </ul>
         </div>
+        
         <footer class="footer">
             <a data-toggle="tooltip" title="Facebook" target=”_blank” href="https://www.facebook.com/muiz07"><i class="fab fa-facebook-square"></i></a>
             <a data-toggle="tooltip" title="Twitter" target=”_blank” href="https://twitter.com/MuizZer07"><i class="fab fa-twitter"></i></a>
@@ -60,14 +61,20 @@
     </nav>
 
     <div class="container-fluid p-0">
+        <div class="timedate" style="margin-left: 50px; margin-top: 10px">
+              <small>Greetings! Today is  {{ now }}. Have a great day!</small>
+        </div>
+            
         <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
             <div style="margin-top: 20px">
                 <h1 class="mb-0">Muiz Ahmed
                     <span class="text-primary">Khan</span>
                 </h1>
                 <div class="subheading mb-5"> House # 4/c, Plot # 15, Uttar Kawla, DokhinKhan · Dhaka, CO (+880)
-                    01912043657 ·
-                    <br>email: <a href="mailto:muizxzer07@gmail.com">muizxzer07@gmail.com</a>
+                    01912043657 · (+880)
+                    01984350913 
+                    <br>email: <a href="mailto:muizxzer07@gmail.com">muizxzer07@gmail.com</a> · 
+                    <a href="mailto:muiz.khan@northsouth.edu">muiz.khan@northsouth.edu</a>
                 </div>
                 <p class="lead mb-5"> {{ content.short_des | safe }} </p>
                 <div class="social-icons">
@@ -89,24 +96,6 @@
         
                 </div>
             </div>
-            <div style="padding: 30px">
-                <blockquote class="blockquote">
-                    <p class="mb-0" style="font-size: 15px">“Speak good or remain silent.”</p>
-                    <footer class="blockquote-footer">Prophet Mohammad (S.A.W) </footer>
-                </blockquote>
-                <hr>
-                <blockquote class="blockquote">
-                    <p class="mb-0" style="font-size: 15px">“Don’t compare yourself with anyone in this world… if you do so, you are insulting
-                        yourself.”</p>
-                    <footer class="blockquote-footer">Bill Gates</footer>
-                </blockquote>
-                <hr>
-                <blockquote class="blockquote">
-                    <p class="mb-0" style="font-size: 15px">“Quiet people have the loudest minds.”</p>
-                    <footer class="blockquote-footer">Stephen Hawking</footer>
-                </blockquote>
-            </div>
-
         </section>
 
         <section class="resume-section p-3 p-lg-5 d-flex d-column" id="bio">
@@ -123,8 +112,6 @@
             <div class="my-auto">
                 <h2 class="mb-5">Education</h2>
                 {{ content.education | safe }}
-
-
             </div>
         </section>
 
@@ -157,12 +144,24 @@
         </section>
 
         <hr class="m-0">
+        
+        <div class="" style="margin-left: 50px">
+            Other Links: <br>
+                <a class="" href="#page-top" role="button" aria-haspopup="true" aria-expanded="false">
+                       Top
+                </a> · 
+                <a class=""  href="{% url 'projects' %}">My Projects</a> · 
+                <a class=""  href="{% url 'bin' %}">My Bin</a> ·
+                <a class=""  href="{% url 'top_10s' %}">My Top 10s</a> ·
+                <a class=""  href="{% url 'my_ratings' %}">My Ratings</a> 
+          </div>
     </div>
 
 </div>
 {% block customjs %}
 <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 <script src="{% static 'js/resume.min.js' %}"></script>
+<script>$('.dropdown-toggle').dropdown()</script>
 {% endblock %}
 
 

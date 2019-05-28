@@ -54,3 +54,34 @@ class FileBin(models.Model):
 
     def __str__(self):
         return self.name
+
+class top10s(models.Model):
+    name = models.CharField(max_length=50)
+    top_list = models.TextField(blank=True)
+    category = models.CharField(max_length=50)
+    pic1 = models.ImageField(upload_to='images/', blank=True)
+    pic2 = models.ImageField(upload_to='images/', blank=True)
+    pic3 = models.ImageField(upload_to='images/', blank=True)
+    pic4 = models.ImageField(upload_to='images/', blank=True)
+
+    def __str__(self):
+        return self.name
+
+class Tag(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+class Ratings(models.Model):
+    name = models.CharField(max_length=50)
+    rating = models.CharField(max_length=50)
+    des = models.TextField(blank=True)
+    tags = models.ManyToManyField(Tag, blank=True)
+    pic1 = models.ImageField(upload_to='images/', blank=True)
+    pic2 = models.ImageField(upload_to='images/', blank=True)
+    pic3 = models.ImageField(upload_to='images/', blank=True)
+    pic4 = models.ImageField(upload_to='images/', blank=True)
+
+    def __str__(self):
+        return self.name

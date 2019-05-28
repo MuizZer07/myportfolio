@@ -13,7 +13,7 @@ Implemented: (so far)
 - Copy Paste Bin (beta)
 
 Future Implementation:
-- New Frontend for the Portfolio
+- My Top 10 lists & Ratings! (Movies, TV Series, Music, Bands, Sports)
 - Chatbot (personal assistant)
 - Greetings Message (with date, horoscope, weather, breaking news)
 - Fix an Appointment form (via Email)

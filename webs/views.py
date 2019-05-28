@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect
-from .models import Content, Project, TextBin, FileBin
+from .models import Content, Project, TextBin, FileBin, top10s, Ratings, Tag
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.paginator import Paginator
 from .forms import TextForm, FileForm
 from django.utils import timezone
+import datetime
 
 def homepage(request):
     content = Content.objects.get(id=1)
-    return render(request, 'webs/new_index.html', {'content': content}) 
+    now = datetime.datetime.now().strftime("%A, %B %d, %Y")
+    return render(request, 'webs/new_index.html', {'content': content, 'now': now}) 
     
 def my_projects(request):
     projects = Project.objects.all()
@@ -16,6 +18,19 @@ def my_projects(request):
 def show_project(request, project_id):
     p = Project.objects.get(pk=project_id)
     return render(request, 'webs/project.html', {'project': p})
+
+def my_top_10s(request):
+    _top10s = top10s.objects.all()
+    return render(request, 'webs/top10s.html', {'top10s': _top10s})
+
+def my_ratings(request):
+    ratings = Ratings.objects.order_by('-id')
+    paginator = Paginator(ratings, 8)
+
+    page = request.GET.get('page')
+    ratings = paginator.get_page(page)
+
+    return render(request, 'webs/ratings.html', {'ratings': ratings})
 
 def bin(request):
     form = TextForm()

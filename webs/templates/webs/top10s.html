@@ -1,0 +1,191 @@
+{% extends 'new_base.html'%} 
+
+{% block title %}
+<title>My Top 10s</title>
+{% endblock %} 
+
+{% block customcss %}
+ {% load staticfiles %} 
+{% endblock %} 
+
+
+{% block content %} 
+<div class="container-fluid">
+        <div class="row">
+            <nav class="nav-extended #000000 black" style="padding-left: 20px">
+                <div class="nav-wrapper">
+                <a href="#" class="brand-logo">My Top 10s</a>
+                </div>
+                <div class="nav-content">
+                <ul class="tabs tabs-transparent">
+                    <li class=""><a href="{% url 'home' %}"><i class="material-icons">arrow_back</i></a></li>
+                    <li class="tab"><a href="#movies" class="active">Movies</a></li>
+                    <li class="tab"><a href="#tv">TV Shows</a></li>
+                    <li class="tab"><a href="#music">Music</a></li>
+                    <li class="tab"><a href="#others">Others</a></li>
+                </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="row">
+            <div id="movies" class="col s12">
+                {% for top10s_ in top10s %}
+                    {% if top10s_.category == 'movies' %}
+                    <div class="col s12 m6">
+                        <ul class="collapsible popout">
+                            <li>
+                                <div class="collapsible-header">
+                                        <strong>Top 10 {{top10s_.name}}  </strong>
+                                </div>
+                                <div class="collapsible-header"> 
+                                        <div class="carousel carousel-slider" style="height: 200px">
+                                            {% if top10s_.pic1 != '' %}
+                                                <a class="carousel-item center" href="#one!"><img src="{{ top10s_.pic1.url }}"></a>
+                                            {% endif %}
+                                            {% if top10s_.pic2 != '' %}
+                                                 <a  class="carousel-item center" href="#one!"><img src="{{ top10s_.pic2.url }}"></a>
+                                            {% endif %}
+                                            {% if top10s_.pic3 != '' %}
+                                                 <a  class="carousel-item center" href="#one!"><img src="{{ top10s_.pic3.url }}"></a>
+                                            {% endif %}
+                                            {% if top10s_.pic4 != '' %}
+                                                 <a  class="carousel-item center" href="#one!"><img src="{{ top10s_.pic4.url }}"></a>
+                                            {% endif %}
+                                         </div>
+                                        <br>
+                                   </div>
+                            
+                                   
+                                <div class="collapsible-body"><span>{{ top10s_.top_list | safe }} </span></div>
+                            </li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>  
+            <div id="tv" class="col s12">
+                    {% for top10s_ in top10s %}
+                    {% if top10s_.category == 'tv' %}
+                    <div class="col s12 m6">
+                        <ul class="collapsible popout">
+                            <li>
+                                <div class="collapsible-header">
+                                        <strong>Top 10 {{top10s_.name}}  </strong>
+                                </div>
+                                <div class="collapsible-header"> 
+                                        <div class="carousel carousel-slider" style="height: 200px">
+                                            {% if top10s_.pic1 != '' %}
+                                                <a class="carousel-item" href="#one!"><img src="{{ top10s_.pic1.url }}"></a>
+                                            {% endif %}
+                                            {% if top10s_.pic2 != '' %}
+                                                 <a class="carousel-item" href="#one!"><img src="{{ top10s_.pic2.url }}"></a>
+                                            {% endif %}
+                                            {% if top10s_.pic3 != '' %}
+                                                 <a class="carousel-item" href="#one!"><img src="{{ top10s_.pic3.url }}"></a>
+                                            {% endif %}
+                                            {% if top10s_.pic4 != '' %}
+                                                 <a class="carousel-item" href="#one!"><img src="{{ top10s_.pic4.url }}"></a>
+                                            {% endif %}
+                                         </div>
+                                        <br>
+                                   </div>
+                            
+                                   
+                                <div class="collapsible-body"><span>{{ top10s_.top_list | safe }} </span></div>
+                            </li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div id="music" class="col s12">
+                    {% for top10s_ in top10s %}
+                    {% if top10s_.category == 'music' %}
+                    <div class="col s12 m6">
+                        <ul class="collapsible popout">
+                            <li>
+                                <div class="collapsible-header">
+                                        <strong>Top 10 {{top10s_.name}}  </strong>
+                                </div>
+                                <div class="collapsible-header"> 
+                                        <div class="carousel carousel-slider" style="height: 200px">
+                                            {% if top10s_.pic1 != '' %}
+                                                <a class="carousel-item" href="#one!"><img src="{{ top10s_.pic1.url }}"></a>
+                                            {% endif %}
+                                            {% if top10s_.pic2 != '' %}
+                                                 <a class="carousel-item" href="#one!"><img src="{{ top10s_.pic2.url }}"></a>
+                                            {% endif %}
+                                            {% if top10s_.pic3 != '' %}
+                                                 <a class="carousel-item" href="#one!"><img src="{{ top10s_.pic3.url }}"></a>
+                                            {% endif %}
+                                            {% if top10s_.pic4 != '' %}
+                                                 <a class="carousel-item" href="#one!"><img src="{{ top10s_.pic4.url }}"></a>
+                                            {% endif %}
+                                         </div>
+                                        <br>
+                                   </div>
+                            
+                                   
+                                <div class="collapsible-body"><span>{{ top10s_.top_list | safe }} </span></div>
+                            </li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div id="others" class="col s12">
+                    {% for top10s_ in top10s %}
+                    {% if top10s_.category == 'others' %}
+                    <div class="col s12 m6">
+                        <ul class="collapsible popout">
+                            <li>
+                                <div class="collapsible-header">
+                                        <strong>Top 10 {{top10s_.name}}  </strong>
+                                </div>
+                                <div class="collapsible-header"> 
+                                        <div class="carousel carousel-slider" style="height: 200px">
+                                            {% if top10s_.pic1 != '' %}
+                                                <a class="carousel-item" href="#one!"><img src="{{ top10s_.pic1.url }}"></a>
+                                            {% endif %}
+                                            {% if top10s_.pic2 != '' %}
+                                                 <a class="carousel-item" href="#one!"><img src="{{ top10s_.pic2.url }}"></a>
+                                            {% endif %}
+                                            {% if top10s_.pic3 != '' %}
+                                                 <a class="carousel-item" href="#one!"><img src="{{ top10s_.pic3.url }}"></a>
+                                            {% endif %}
+                                            {% if top10s_.pic4 != '' %}
+                                                 <a class="carousel-item" href="#one!"><img src="{{ top10s_.pic4.url }}"></a>
+                                            {% endif %}
+                                         </div>
+                                        <br>
+                                   </div>
+                            
+                                   
+                                <div class="collapsible-body"><span>{{ top10s_.top_list | safe }} </span></div>
+                            </li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+    </div>
+
+{% endblock %} 
+
+{% block customjs %}
+<script>
+        $(document).ready(function(){
+         $('.tabs').tabs();
+       });
+</script>
+<script>
+    $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+</script>
+<script>
+  $('.carousel.carousel-slider').carousel({
+    indicators: true
+  });
+</script>
+{% endblock %} 

@@ -1,0 +1,113 @@
+{% extends 'new_base.html'%} 
+
+{% block title %}
+<title>My Ratings</title>
+{% endblock %} 
+
+{% block customcss %}
+ {% load staticfiles %} 
+{% endblock %} 
+
+
+{% block content %} 
+<div class="container-fluid">
+        <div class="row">
+            <nav class="nav-extended #000000 black" style="padding-left: 20px">
+                <div class="nav-wrapper">
+                <a href="#" class="brand-logo">My Ratings</a>
+                </div>
+                <div class="nav-content">
+                <ul class="tabs tabs-transparent">
+                    <li class=""><a href="{% url 'home' %}"><i class="material-icons">arrow_back</i></a></li>
+                   
+                </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="row center">
+                <div class="col s12 m2"></div>
+                <div class="col s12 m8 ">
+                        <div class="card-panel teal">
+                        <span class="white-text">I am going to rate my new experiences here out of 10. Any kind of recent experience! </span>
+                        </div>
+                    </div>
+        </div>
+        <div class="row">
+            
+            <div id="" class="col s12">
+                
+                {% for ratings_ in ratings %}
+                    <div class="col s12 m6">
+                        <ul class="collapsible popout">
+                            <li>
+                                <div class="collapsible-header">
+                                        <strong>{{ratings_.name}} </strong>
+                                        <span class="new badge" data-badge-caption="">Rating: {{ratings_.rating}} / 10</span>  
+                                </div>
+                                <div class="collapsible-header"> 
+                                        <div class="carousel carousel-slider" style="height: 200px">
+                                            {% if ratings_.pic1 != '' %}
+                                                <a class="carousel-item center" href="#one!"><img src="{{ ratings_.pic1.url }}"></a>
+                                            {% endif %}
+                                            {% if ratings_.pic2 != '' %}
+                                                 <a  class="carousel-item center" href="#one!"><img src="{{ ratings_.pic2.url }}"></a>
+                                            {% endif %}
+                                            {% if ratings_.pic3 != '' %}
+                                                 <a  class="carousel-item center" href="#one!"><img src="{{ ratings_.pic3.url }}"></a>
+                                            {% endif %}
+                                            {% if ratings_.pic4 != '' %}
+                                                 <a  class="carousel-item center" href="#one!"><img src="{{ ratings_.pic4.url }}"></a>
+                                            {% endif %}
+                                         </div>
+                                        <br>
+                                   </div>
+                            
+                                   
+                                <div class="collapsible-body">
+                                    <h3>{{ratings_.rating}} out of 10</h3>
+                                    <span>{{ ratings_.des | safe }} </span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>  
+            
+            
+    </div>
+    <div class="row" style="margin-bottom: 100px ">
+            <div class="pagination center">
+                    <span class="step-links">
+                        <span class="current ">
+                                Page {{ ratings.number }} of {{ ratings.paginator.num_pages }}
+                            </span>
+                            <br><br>
+                        {% if ratings.has_previous %}
+                            <a class="btn" href="?page=1">&laquo; first</a>
+                            <a class="btn" href="?page={{ contacts.previous_page_number }}">previous</a>
+                        {% endif %}
+                
+                        {% if ratings.has_next %}
+                            <a class="btn" href="?page={{ ratings.next_page_number }}">next</a>
+                            <a class="btn" href="?page={{ ratings.paginator.num_pages }}">last &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+    </div>
+
+{% endblock %} 
+
+{% block customjs %}
+
+<script>
+    $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+</script>
+<script>
+  $('.carousel.carousel-slider').carousel({
+    indicators: true
+  });
+</script>
+{% endblock %} 

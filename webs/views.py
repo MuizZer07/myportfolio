@@ -8,8 +8,7 @@ import datetime
 
 def homepage(request):
     content = Content.objects.get(id=1)
-    now = datetime.datetime.now().strftime("%A, %B %d, %Y")
-    return render(request, 'webs/new_index.html', {'content': content, 'now': now}) 
+    return render(request, 'webs/new_index.html', {'content': content}) 
     
 def my_projects(request):
     projects = Project.objects.all()

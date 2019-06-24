@@ -5,6 +5,7 @@ class Content(models.Model):
     short_des = models.TextField()
     bio = models.TextField(null=True)
     education = models.TextField(null=True)
+    work_experience = models.TextField(null=True)
     skill = models.TextField(null=True)
     interest = models.TextField(null=True)
     resume = models.FileField(upload_to='files/', null=True)
